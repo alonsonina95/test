@@ -5,3 +5,12 @@ services:
 script:
     - docker build -t manydesigns/node .
     - docker images manydesigns/node
+
+before_deploy:
+    - docker login -u alonson95 -p Pikachu95.
+
+deploy:
+    provider: script
+    script: docker push manydesigns/node
+    on:
+        branch: master
